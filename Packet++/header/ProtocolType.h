@@ -71,6 +71,11 @@ namespace pcpp
 		ARP = 0x80,
 
 		/**
+		 * LNIC protocol
+		 */
+		LNIC = 0x99,
+
+		/**
 		 * VLAN protocol
 		 */
 		VLAN = 0x100,

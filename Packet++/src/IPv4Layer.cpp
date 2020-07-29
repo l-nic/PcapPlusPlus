@@ -12,6 +12,7 @@
 #include <sstream>
 #include "IpUtils.h"
 #include "Logger.h"
+#include "LnicLayer.h"
 
 namespace pcpp
 {
@@ -304,6 +305,11 @@ void IPv4Layer::parseNextLayer()
 		}
 		else
 			m_NextLayer = new PayloadLayer(payload, payloadLen, this, m_Packet);
+		break;
+	case PACKETPP_IPPROTO_LNIC:
+	    if (m_DataLen - hdrLen >= sizeof(lnichdr)) {
+			m_NextLayer = new LnicLayer(payload, payloadLen, this, m_Packet);
+		}
 		break;
 	default:
 		m_NextLayer = new PayloadLayer(payload, payloadLen, this, m_Packet);

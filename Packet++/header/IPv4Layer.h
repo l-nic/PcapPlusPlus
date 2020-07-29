@@ -98,6 +98,8 @@ namespace pcpp
 		PACKETPP_IPPROTO_NONE = 59,
 		/** IPv6 Destination options		*/
 		PACKETPP_IPPROTO_DSTOPTS = 60,
+		/** IPv4 LNIC payload            */
+		PACKETPP_IPPROTO_LNIC = 153,
 		/** Raw IP packets			*/
 		PACKETPP_IPPROTO_RAW = 255,
 		/** Maximum value */
