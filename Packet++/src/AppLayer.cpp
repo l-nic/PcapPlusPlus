@@ -19,7 +19,10 @@ AppLayer::AppLayer(uint64_t service_time, uint64_t sent_time) {
 }
 
 std::string AppLayer::toString() const {
+    apphdr* app_hdr = getAppHeader();
     std::ostringstream output_string;
+    output_string << "App(service_time=" << be64toh(app_hdr->service_time) << ", sent_time="
+                  << be64toh(app_hdr->sent_time) << ")";
     return output_string.str();
 }
 

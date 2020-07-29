@@ -30,12 +30,10 @@ LnicLayer::LnicLayer(uint8_t flags, uint16_t src_context, uint16_t dst_context,
 LnicLayer::LnicLayer(uint8_t* data, size_t dataLen, Layer* prevLayer, Packet* packet) : Layer(data, dataLen, prevLayer, packet) {
     m_Protocol = LNIC;
     m_DataLen = sizeof(lnichdr) + be16toh(getLnicHeader()->msg_len);
-    fprintf(stdout, "mdatalen is %d\n", m_DataLen);
 }
 
 void LnicLayer::parseNextLayer() {
     size_t header_len = getHeaderLen();
-    fprintf(stdout, "trying to create next layer with datalen %d\n", m_DataLen);
     if (m_DataLen <= header_len) {
         return;
     }
@@ -46,9 +44,8 @@ void LnicLayer::parseNextLayer() {
 
 std::string LnicLayer::toString() const {
     std::ostringstream output_string;
-    fprintf(stdout, "getting string\n");
-    lnichdr* lnic_hdr = getLnicHeader();
     std::string flags_str;
+    lnichdr* lnic_hdr = getLnicHeader();
     uint8_t lnic_header_flags = lnic_hdr->flags;
     bool is_data = lnic_header_flags & LNIC_DATA_FLAG_MASK;
     bool is_ack = lnic_header_flags & LNIC_ACK_FLAG_MASK;
@@ -62,10 +59,10 @@ std::string LnicLayer::toString() const {
     flags_str += is_chop ? " CHOP" : "";
     output_string << "LNIC(flags=" << flags_str << ", src_context=" << be16toh(lnic_hdr->src_context)
                   << ", dst_context=" << be16toh(lnic_hdr->dst_context) << ", msg_len="
-                  << be16toh(lnic_hdr->msg_len) << ", pkt_offset=" << lnic_hdr->pkt_offset
+                  << be16toh(lnic_hdr->msg_len) << ", pkt_offset=" << (int)lnic_hdr->pkt_offset
                   << ", pull_offset=" << be16toh(lnic_hdr->pull_offset) << ", tx_msg_id="
                   << be16toh(lnic_hdr->pkt_offset) << ", buf_ptr=" << be16toh(lnic_hdr->buf_ptr)
-                  << ", buf_size_class=" << lnic_hdr->buf_size_class << ")";
+                  << ", buf_size_class=" << (int)lnic_hdr->buf_size_class << ")";
     return output_string.str();
 }
 
