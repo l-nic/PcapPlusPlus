@@ -61,7 +61,7 @@ std::string LnicLayer::toString() const {
                   << ", dst_context=" << be16toh(lnic_hdr->dst_context) << ", msg_len="
                   << be16toh(lnic_hdr->msg_len) << ", pkt_offset=" << (int)lnic_hdr->pkt_offset
                   << ", pull_offset=" << be16toh(lnic_hdr->pull_offset) << ", tx_msg_id="
-                  << be16toh(lnic_hdr->pkt_offset) << ", buf_ptr=" << be16toh(lnic_hdr->buf_ptr)
+                  << be16toh(lnic_hdr->tx_msg_id) << ", buf_ptr=" << be16toh(lnic_hdr->buf_ptr)
                   << ", buf_size_class=" << (int)lnic_hdr->buf_size_class << ")";
     return output_string.str();
 }
