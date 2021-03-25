@@ -12,7 +12,8 @@
 #include <sstream>
 #include "IpUtils.h"
 #include "Logger.h"
-#include "LnicLayer.h"
+#include "NdpLayer.h"
+#include "HomaLayer.h"
 
 namespace pcpp
 {
@@ -306,9 +307,14 @@ void IPv4Layer::parseNextLayer()
 		else
 			m_NextLayer = new PayloadLayer(payload, payloadLen, this, m_Packet);
 		break;
-	case PACKETPP_IPPROTO_LNIC:
-	    if (m_DataLen - hdrLen >= sizeof(lnichdr)) {
-			m_NextLayer = new LnicLayer(payload, payloadLen, this, m_Packet);
+	case PACKETPP_IPPROTO_NDP:
+	    if (m_DataLen - hdrLen >= sizeof(ndphdr)) {
+			m_NextLayer = new NdpLayer(payload, payloadLen, this, m_Packet);
+		}
+		break;
+	case PACKETPP_IPPROTO_HOMA:
+	    if (m_DataLen - hdrLen >= sizeof(homahdr)) {
+			m_NextLayer = new HomaLayer(payload, payloadLen, this, m_Packet);
 		}
 		break;
 	default:
