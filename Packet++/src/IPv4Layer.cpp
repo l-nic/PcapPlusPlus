@@ -5,6 +5,8 @@
 #include "PayloadLayer.h"
 #include "UdpLayer.h"
 #include "TcpLayer.h"
+#include "NdpLayer.h"
+#include "HomaLayer.h"
 #include "IcmpLayer.h"
 #include "GreLayer.h"
 #include "IgmpLayer.h"
@@ -12,15 +14,12 @@
 #include <sstream>
 #include "IpUtils.h"
 #include "Logger.h"
-#include "NdpLayer.h"
-#include "HomaLayer.h"
 
 namespace pcpp
 {
 
 #define IPV4OPT_DUMMMY 0xff
 #define IPV4_MAX_OPT_SIZE 40
-
 
 /// ~~~~~~~~~~~~~~~~~
 /// IPv4OptionBuilder

@@ -27,7 +27,7 @@ NdpLayer::NdpLayer(uint8_t flags, uint16_t src_context, uint16_t dst_context,
     ndp_hdr->buf_size_class = buf_size_class;
 }
 
-NdpLayer::NdpLayer(uint8_t* data, size_t dataLen, Layer* prevLayer, Packet* packet) : Layer(data, dataLen, prevLayer, packet) {
+NdpLayer::NdpLayer(uint8_t* data, size_t dataLen, Layer* prevLayer, Packet* packet): Layer(data, dataLen, prevLayer, packet) {
     m_Protocol = NDP;
     m_DataLen = sizeof(ndphdr) + be16toh(getNdpHeader()->msg_len);
 }

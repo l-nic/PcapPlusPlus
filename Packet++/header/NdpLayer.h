@@ -31,9 +31,9 @@ namespace pcpp
     class NdpLayer : public Layer
     {
     public:
-        NdpLayer(uint8_t* data, size_t dataLen, Layer* prevLayer, Packet* packet);
-
         NdpLayer(uint8_t flags, uint16_t src_context, uint16_t dst_context, uint16_t msg_len, uint8_t pkt_offset, uint16_t pull_offset, uint16_t tx_msg_id, uint16_t buf_ptr, uint8_t buf_size_class);
+
+        NdpLayer(uint8_t* data, size_t dataLen, Layer* prevLayer, Packet* packet);
 
         ndphdr* getNdpHeader() const { return (ndphdr*)m_Data; }
 

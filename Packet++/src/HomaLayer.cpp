@@ -21,7 +21,7 @@ HomaLayer::HomaLayer(uint8_t flags, uint16_t src_context, uint16_t dst_context,
     homa_hdr->dst_context = htobe16(dst_context);
     homa_hdr->msg_len = htobe16(msg_len);
     homa_hdr->pkt_offset = pkt_offset;
-    homa_hdr->grant_offset = htobe16(pull_offset);
+    homa_hdr->grant_offset = htobe16(grant_offset);
     homa_hdr->grant_prio = grant_prio;
     homa_hdr->tx_msg_id = htobe16(tx_msg_id);
     homa_hdr->buf_ptr = htobe16(buf_ptr);

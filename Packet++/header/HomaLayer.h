@@ -39,7 +39,7 @@ namespace pcpp
 
         HomaLayer(uint8_t flags, uint16_t src_context, uint16_t dst_context, uint16_t msg_len, uint8_t pkt_offset, uint16_t grant_offset, uint8_t grant_prio, uint16_t tx_msg_id, uint16_t buf_ptr, uint8_t buf_size_class);
 
-        ndphdr* getHomaHeader() const { return (homahdr*)m_Data; }
+        homahdr* getHomaHeader() const { return (homahdr*)m_Data; }
 
         void parseNextLayer();
 
