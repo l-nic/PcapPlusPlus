@@ -98,8 +98,10 @@ namespace pcpp
 		PACKETPP_IPPROTO_NONE = 59,
 		/** IPv6 Destination options		*/
 		PACKETPP_IPPROTO_DSTOPTS = 60,
+		/** IPv4 LNIC payload            */
+		PACKETPP_IPPROTO_LNIC = 153,
 		/** IPv4 NDP payload            */
-		PACKETPP_IPPROTO_NDP = 153,
+		PACKETPP_IPPROTO_NDP = 155,
 		/** IPv4 HOMA payload            */
 		PACKETPP_IPPROTO_HOMA = 154,
 		/** Raw IP packets			*/

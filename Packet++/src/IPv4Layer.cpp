@@ -5,6 +5,7 @@
 #include "PayloadLayer.h"
 #include "UdpLayer.h"
 #include "TcpLayer.h"
+#include "LnicLayer.h"
 #include "NdpLayer.h"
 #include "HomaLayer.h"
 #include "IcmpLayer.h"
@@ -305,6 +306,11 @@ void IPv4Layer::parseNextLayer()
 		}
 		else
 			m_NextLayer = new PayloadLayer(payload, payloadLen, this, m_Packet);
+		break;
+	case PACKETPP_IPPROTO_LNIC:
+	    if (m_DataLen - hdrLen >= sizeof(lnichdr)) {
+			m_NextLayer = new LnicLayer(payload, payloadLen, this, m_Packet);
+		}
 		break;
 	case PACKETPP_IPPROTO_NDP:
 	    if (m_DataLen - hdrLen >= sizeof(ndphdr)) {

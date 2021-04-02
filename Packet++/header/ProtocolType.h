@@ -71,9 +71,14 @@ namespace pcpp
 		ARP = 0x80,
 
 		/**
+		 * LNIC protocol
+		 */
+		LNIC = 0x99,
+
+		/**
 		 * NDP protocol
 		 */
-		NDP = 0x99,
+		NDP = 0x97,
 
 		/**
 		 * Homa protocol
